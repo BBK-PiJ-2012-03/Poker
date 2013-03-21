@@ -2,11 +2,11 @@ package poker;
 
 public interface Card {
 	
-	public int getRank();
+	public Rank getRank();
 	
-	public void setRank(int rank);
+	public void setRank(Rank rank);
 	
-	public void setSuit(int suit);
+	public Suit getSuit();
 	
-	public int getSuit();
+	public void setSuit(Suit suit);
 }
