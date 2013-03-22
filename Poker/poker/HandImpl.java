@@ -3,9 +3,9 @@ package poker;
 public class HandImpl implements Hand {
 
 	Category category;
-	Card hand[];
+	Card[] hand = new Card[5];
 	
-	HandImpl(Card[] cards){
+	public HandImpl(Card[] cards){
 		evaluateHand(cards);		
 	}
 	
@@ -23,15 +23,15 @@ public class HandImpl implements Hand {
 		boolean pair = true;
 		boolean allDifferentRank=true;
 		
-		// The cards are ordered from lower value to highest
+		// The cards are ordered from highest value to lowest
 		// This makes easier the evaluation of the hand category
 		// Also, it will find if there is an straight or straight flush
 		// as it will find whether two cards are equal at least,
 		// and will allow the system to check which kind of equality there is
 		
 		for(int i=0;i<initialCards.length;i++){
-			for(int j=0;j<initialCards.length;j++){
-				if(initialCards[i].getRank().compareTo(initialCards[j].getRank()) > 0 ){
+			for(int j=(i+1);j<initialCards.length;j++){
+				if(initialCards[i].getRank().compareTo(initialCards[j].getRank()) < 0 ){
 					Card tempCard = initialCards[i];
 					initialCards[i] = initialCards[j];
 					initialCards[j] = tempCard;
@@ -43,6 +43,10 @@ public class HandImpl implements Hand {
 			}
 		}
 		
+
+			
+
+	
 		// This will look if all the suits are the same 
 		// for the flush and the straightFlush.
 		// If it finds a different suit it will stop doing the loop
@@ -54,6 +58,10 @@ public class HandImpl implements Hand {
 			}
 		}
 		
+		
+		hand = initialCards;
+		return;
+		/*
 		// Checking if it is a straight or straight flush
 		for(int i=0;i<initialCards.length-1;i++){
 			if(initialCards[i].getRank().ordinal()+1!=initialCards[i+1].getRank().ordinal()){
@@ -64,15 +72,11 @@ public class HandImpl implements Hand {
 		
 		if(straightFlush){
 			category = Category.Straight_Flush;
-			for(int i=0;i<5;i++){
-				for(int j=4;i>=0;j--){
-					hand = new CardImpl[5];
-					
-				}
-			}
+			hand = initialCards;
+			return;			
 		}
 		
-		
+		*/
 	}
 
 	public Category getCategory() {
