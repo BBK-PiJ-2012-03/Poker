@@ -15,6 +15,6 @@ public enum Rank {
 		return rankValue;
 	}
 	
-
+// Try
 }
 
