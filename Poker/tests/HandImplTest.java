@@ -16,7 +16,7 @@ public class HandImplTest {
 
 	@Test
 	public void testStraightFlush() {
-		Hand hand;
+		Hand hand;	
 		Card[] card = new Card[5];
 		card[0] = new CardImpl(Rank.TWO,Suit.DIAMONDS);
 		card[1] = new CardImpl(Rank.THREE,Suit.DIAMONDS);
@@ -24,9 +24,6 @@ public class HandImplTest {
 		card[3] = new CardImpl(Rank.FIVE,Suit.DIAMONDS);
 		card[4] = new CardImpl(Rank.SIX,Suit.DIAMONDS);
 		hand = new HandImpl(card);	
-		for(int i=0;i<5;i++){
-			System.out.println(hand.getHand()[i].getRank());
-		}
 		assertEquals(Category.Straight_Flush,hand.getCategory());
 		
 	}

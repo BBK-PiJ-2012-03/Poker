@@ -57,18 +57,20 @@ public class HandImpl implements Hand {
 				break;
 			}
 		}
+				
+
+
 		
 		
-		hand = initialCards;
-		return;
-		/*
 		// Checking if it is a straight or straight flush
 		for(int i=0;i<initialCards.length-1;i++){
-			if(initialCards[i].getRank().ordinal()+1!=initialCards[i+1].getRank().ordinal()){
+			if(initialCards[i].getRank().ordinal()-1!=initialCards[i+1].getRank().ordinal()){
 				straight=false;
-				straightFlush=false;
+				straightFlush=false;					
+				break;
 			}
 		}
+		
 		
 		if(straightFlush){
 			category = Category.Straight_Flush;
@@ -76,7 +78,7 @@ public class HandImpl implements Hand {
 			return;			
 		}
 		
-		*/
+		
 	}
 
 	public Category getCategory() {
