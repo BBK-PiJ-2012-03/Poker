@@ -11,7 +11,7 @@ public class HandImpl implements Hand {
 	}
 	
 	private void evaluateHand(Card[] card) {
-		// TODO Auto-generated method stubawfg awta
+		// TODO Auto-generated method
 		
 	}
 
