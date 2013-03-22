@@ -1,5 +1,6 @@
 package poker;
 
+import java.util.Collections;
 import java.util.Stack;
 
 public class DeckImpl implements Deck {
@@ -22,6 +23,8 @@ public class DeckImpl implements Deck {
 			 }
 			  
 		 }
+		 
+		 Collections.shuffle(myDeck);
 		 	
 	}
 	
