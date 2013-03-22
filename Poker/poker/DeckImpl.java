@@ -11,7 +11,7 @@ public class DeckImpl implements Deck {
 		
 		 myDeck = new Stack<Card>();
 		 
-		 //Initialize all cards
+		 //Initialise all cards
 		 for(Rank r : Rank.values()) {
 			 
 			 for(Suit s: Suit.values()) {
@@ -30,6 +30,17 @@ public class DeckImpl implements Deck {
 	
 	public Stack<Card> getDeck(){
 		return myDeck;
+	}
+	
+	public Card[] dealHand() {
+		
+		Card[] cards = new Card[5];
+		
+		//No need to check for nullPointerException, the deck will never become empty
+		for(int i = 0 ; i < 5; i++) {
+			cards[i] = myDeck.pop();
+		}
+		return cards;
 	}
 	
 	
