@@ -21,7 +21,8 @@ public class HandImpl implements Hand {
 		boolean threeKind = true;
 		boolean twoPairs = true;
 		boolean pair = true;
-		boolean allDifferentRank=true;
+		//When this is true, the program does not check for categories with two or more similar ranks
+		boolean allDifferentRank=true; 
 		
 		// The cards are ordered from highest value to lowest
 		// This makes easier the evaluation of the hand category
@@ -77,6 +78,41 @@ public class HandImpl implements Hand {
 			hand = initialCards;
 			return;			
 		}
+		
+		// Checking if there is a poker
+		if(!allDifferentRank){
+			int numberOfCoincidences = 0;
+			for(int i=0;i<=1;i++){
+				for(int j=(i+1);j<5;j++){
+					if(initialCards[i].getRank().compareTo(initialCards[j].getRank())==0){
+						numberOfCoincidences++;						
+					}
+				}
+				if (numberOfCoincidences==3){
+					poker=true;
+					break;
+				} else {
+					poker = false;
+					numberOfCoincidences=0;
+				}
+				
+			}
+		}
+		
+		if(poker){
+			if(initialCards[2].getRank().ordinal()<initialCards[0].getRank().ordinal()){
+				Card temp = initialCards[4];
+				initialCards[4] = initialCards[0];
+				initialCards[0] = temp;
+			}
+			hand = initialCards;
+			category = Category.Four_Of_A_Kind;
+			return;
+		}
+		
+		
+		
+		
 		
 		
 	}
