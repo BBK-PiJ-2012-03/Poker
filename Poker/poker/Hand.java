@@ -7,12 +7,12 @@ public interface Hand {
 	 * 
 	 * @return Category of the hand
 	 */
-	public Category handCategory();
+	public Category getCategory();
 	
 	/**
 	 * Returns an array with the cards in the hand
 	 * 
 	 * @return Card[] array with the cards in Hand
 	 */
-	public Card[] cardsInHand();
+	public Card[] getHand();
 }
