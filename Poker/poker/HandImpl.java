@@ -1,11 +1,11 @@
 package poker;
 
-public class HardImpl implements Hand {
+public class HandImpl implements Hand {
 
 	Category category;
 	Card card[];
 	
-	HardImpl(Card[] card){
+	HandImpl(Card[] card){
 		evaluateHand(card);
 		
 	}
