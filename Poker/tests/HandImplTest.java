@@ -90,12 +90,24 @@ public class HandImplTest {
 		card[3] = new CardImpl(Rank.FOUR,Suit.SPADES);
 		card[4] = new CardImpl(Rank.FOUR,Suit.DIAMONDS);
 		hand = new HandImpl(card);
-		for(int i=0;i<5;i++){
-			System.out.println(hand.getHand()[i].getRank());
-		}
 		assertEquals(Category.Three_Of_A_Kind,hand.getCategory());		
 	}
 	
+	@Test
+	public void testTwoPairs() {
+		Hand hand;	
+		Card[] card = new Card[5];
+		card[0] = new CardImpl(Rank.TWO,Suit.DIAMONDS);
+		card[1] = new CardImpl(Rank.TWO,Suit.CLUBS);
+		card[2] = new CardImpl(Rank.THREE,Suit.HEARTS);
+		card[3] = new CardImpl(Rank.THREE,Suit.SPADES);
+		card[4] = new CardImpl(Rank.FOUR,Suit.DIAMONDS);
+		hand = new HandImpl(card);
+		for(int i=0;i<5;i++){
+			System.out.println(hand.getHand()[i].getRank());
+		}
+		assertEquals(Category.Two_Pairs,hand.getCategory());		
+	}
 	
 	
 

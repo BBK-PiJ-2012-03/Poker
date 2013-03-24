@@ -157,6 +157,7 @@ public class HandImpl implements Hand {
 				initialCards[3] = temp;
 				category = Category.Three_Of_A_Kind;
 				hand = initialCards;
+				return;
 			} else if (initialCards[2].getRank() == initialCards[3].getRank() && 
 					initialCards[3].getRank() == initialCards[4].getRank()){
 				Card temp = initialCards[0];
@@ -167,10 +168,36 @@ public class HandImpl implements Hand {
 				initialCards[4] = temp;
 				category = Category.Three_Of_A_Kind;
 				hand = initialCards;
+				return;
 			}
 		}
 		
-		
+		// Checking if there are two pairs
+		if(twoPairs){
+			if(initialCards[0].getRank() == initialCards[1].getRank() && 
+					initialCards[2].getRank() == initialCards[3].getRank()){
+				category = Category.Two_Pairs;
+				hand = initialCards;
+				return;
+			} else if(initialCards[0].getRank() == initialCards[1].getRank() && 
+					initialCards[3].getRank() == initialCards[4].getRank()){
+				Card temp = initialCards[2];
+				initialCards[2] = initialCards[4];
+				initialCards[4] = temp;
+				category = Category.Two_Pairs;
+				hand = initialCards;
+				return;
+			} else if(initialCards[1].getRank() == initialCards[2].getRank() && 
+					initialCards[3].getRank() == initialCards[4].getRank()){
+				Card temp = initialCards[0];
+				initialCards[0] = initialCards[2];
+				initialCards[2] = initialCards[4];
+				initialCards[4] = temp;
+				category = Category.Two_Pairs;
+				hand = initialCards;
+				return;
+			}
+		}
 	}
 
 	public Category getCategory() {
