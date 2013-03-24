@@ -81,7 +81,7 @@ public class HandImplTest {
 	}
 	
 	@Test
-	public void testThreeKind1() {
+	public void testThreeKind() {
 		Hand hand;	
 		Card[] card = new Card[5];
 		card[0] = new CardImpl(Rank.TWO,Suit.DIAMONDS);
@@ -103,11 +103,40 @@ public class HandImplTest {
 		card[3] = new CardImpl(Rank.THREE,Suit.SPADES);
 		card[4] = new CardImpl(Rank.FOUR,Suit.DIAMONDS);
 		hand = new HandImpl(card);
-		for(int i=0;i<5;i++){
-			System.out.println(hand.getHand()[i].getRank());
-		}
 		assertEquals(Category.Two_Pairs,hand.getCategory());		
 	}
+	
+	@Test
+	public void testPair() {
+		Hand hand;	
+		Card[] card = new Card[5];
+		card[0] = new CardImpl(Rank.TWO,Suit.DIAMONDS);
+		card[1] = new CardImpl(Rank.FIVE,Suit.CLUBS);
+		card[2] = new CardImpl(Rank.FIVE,Suit.HEARTS);
+		card[3] = new CardImpl(Rank.THREE,Suit.SPADES);
+		card[4] = new CardImpl(Rank.FOUR,Suit.DIAMONDS);
+		hand = new HandImpl(card);
+		assertEquals(Category.Pair,hand.getCategory());		
+	}
+	
+	@Test
+	public void testHighCard(){
+		Hand hand;	
+		Card[] card = new Card[5];
+		card[0] = new CardImpl(Rank.KING,Suit.DIAMONDS);
+		card[1] = new CardImpl(Rank.EIGHT,Suit.CLUBS);
+		card[2] = new CardImpl(Rank.QUEEN,Suit.DIAMONDS);
+		card[3] = new CardImpl(Rank.TEN,Suit.DIAMONDS);
+		card[4] = new CardImpl(Rank.JACK,Suit.DIAMONDS);
+		hand = new HandImpl(card);
+		assertEquals(Rank.KING, hand.getHand()[0].getRank());
+		assertEquals(Rank.QUEEN, hand.getHand()[1].getRank());
+		assertEquals(Rank.JACK, hand.getHand()[2].getRank());
+		assertEquals(Rank.TEN, hand.getHand()[3].getRank());
+		assertEquals(Rank.EIGHT, hand.getHand()[4].getRank());
+		assertEquals(Category.High_Card,hand.getCategory());		
+	}
+	
 	
 	
 

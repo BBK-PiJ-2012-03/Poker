@@ -198,6 +198,45 @@ public class HandImpl implements Hand {
 				return;
 			}
 		}
+		
+		if(pair){
+			if(initialCards[0].getRank() == initialCards[1].getRank()){
+				category = Category.Pair;
+				hand = initialCards;
+				return;
+			} else if (initialCards[1].getRank() == initialCards[2].getRank()){
+				Card temp = initialCards[0];
+				initialCards[0] = initialCards[2];
+				initialCards[2] = temp;
+				category = Category.Pair;
+				hand = initialCards;
+				return;
+			} else if (initialCards[2].getRank() == initialCards[3].getRank()){
+				Card temp = initialCards[0];
+				initialCards[0] = initialCards[2];
+				initialCards[2] = temp;
+				temp = initialCards[1];
+				initialCards[1] = initialCards[3];
+				initialCards[3] = temp;
+				category = Category.Pair;
+				hand = initialCards;
+				return;
+			} else if (initialCards[3].getRank() == initialCards[4].getRank()){
+				Card temp = initialCards[3];
+				Card temp2 = initialCards[4];
+				initialCards[4] = initialCards[2];
+				initialCards[3] = initialCards[1];
+				initialCards[2] = initialCards[0];
+				initialCards[0]=temp;
+				initialCards[1]=temp2;
+				category = Category.Pair;
+				hand = initialCards;
+				return;
+			}
+		}
+		
+		category = Category.High_Card;
+		hand = initialCards;
 	}
 
 	public Category getCategory() {
