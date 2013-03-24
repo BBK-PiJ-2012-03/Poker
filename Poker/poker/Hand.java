@@ -15,4 +15,6 @@ public interface Hand {
 	 * @return Card[] array with the cards in Hand
 	 */
 	public Card[] getHand();
+	
+	public String toString();
 }

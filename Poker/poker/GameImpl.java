@@ -9,13 +9,13 @@ public class GameImpl implements Game {
 	Deck deck = new DeckImpl();
 	
 	//Hands are dealt
-	Hand playerHand = new HandImpl(deck.dealHand());
-	Hand computerHand = new HandImpl(deck.dealHand());
+	Hand playerInitialHand = new HandImpl(deck.dealHand());
+	Hand computerInitialHand = new HandImpl(deck.dealHand());
 	
 	//An array of card is created for its hand containing the cards of each hand
 	//This is done so that we can change some cards and then create a new hand which will be ordered and evaluated by HandImpl constructor
-	Card[] playerHandCards = playerHand.getHand();
-	Card[] computerHandCards = computerHand.getHand();
+	Card[] playerHandCards = playerInitialHand.getHand();
+	Card[] computerHandCards = computerInitialHand.getHand();
 	
 	
 	
@@ -29,21 +29,33 @@ public class GameImpl implements Game {
 	
 	public void launch() {
 	
-		//Dealer's changes come here TODO	
+		//Dealer's changes come here TODO
+		int dealerCardsToChange = DealerAI.cardsToChange(computerInitialHand);
+		
+		while(dealerCardsToChange > 0) {
+			computerHandCards[5-dealerCardsToChange] = deck.dealCard();
+			dealerCardsToChange--;	
+		}
+		
+		//Finally I recreate the dealer's hand after the changes using the computerHandCards array
+		Hand computerFinalHand = new HandImpl(computerHandCards);
+		
+		//deck.prettyPrint(); WTF WHY WHY WHY WHY
 	
 		//Player's changes
-		System.out.println("Your hand is " + playerHand.toString()); //TODO Overwrite the toString method of Hand to print e.x. ACE of SPADES
-		int cardsToChange = howManyCardsToChange();
+		System.out.println("Your hand is " + playerInitialHand.toString());
 		
-		for(int i=0; i < cardsToChange; i++) {
-			
-		}
+		
+		
+		
+		int playerCardsToChange = howManyCards();
+		
 		
 		
 	
 	}
 	
-	public int howManyCardsToChange() {
+	public int howManyCards() {
 		System.out.println("How many cards you want to change?");
 		
 		Scanner scanner = new Scanner(System.in);

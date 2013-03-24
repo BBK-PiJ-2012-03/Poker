@@ -14,5 +14,12 @@ public interface Deck {
 	* @return the 5 card array
 	*/
 	public Card[] dealHand();
+	
+	/**
+	 * Deals one card by popping the card on top of the stack.
+	 * @return the card on top of the Stack
+	 */
+	public Card dealCard();
 
+	/*public void prettyPrint();*/
 }
