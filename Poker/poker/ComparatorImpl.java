@@ -29,6 +29,8 @@ public class ComparatorImpl implements Comparator{
 				
 				if (hand1.getHand()[i].getRank().ordinal() < hand2.getHand()[i].getRank().ordinal() ) {
 					return 2;
+				} else 	if (hand1.getHand()[i].getRank().ordinal() > hand2.getHand()[i].getRank().ordinal() ) {
+					return 1;
 				}
 				
 				
