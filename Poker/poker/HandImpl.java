@@ -14,7 +14,7 @@ public class HandImpl implements Hand {
 		// As soon as the different categories are discarded, 
 		// the respective boolean turns false
 		boolean straightFlush = true;
-		boolean poker = true;
+		boolean poker = false;
 		boolean fullHouse =true;
 		boolean flush = true;
 		boolean straight = true;
@@ -32,11 +32,11 @@ public class HandImpl implements Hand {
 		
 		for(int i=0;i<initialCards.length;i++){
 			for(int j=(i+1);j<initialCards.length;j++){
-				if(initialCards[i].getRank().compareTo(initialCards[j].getRank()) < 0 ){
+				if(initialCards[i].getRank().ordinal() < initialCards[j].getRank().ordinal()){
 					Card tempCard = initialCards[i];
 					initialCards[i] = initialCards[j];
 					initialCards[j] = tempCard;
-				} else if(initialCards[i].getRank().compareTo(initialCards[j].getRank())==0){
+				} else if(initialCards[i].getRank().ordinal() == initialCards[j].getRank().ordinal()){
 					straight=false;
 					straightFlush=false;
 					allDifferentRank=false;
@@ -44,10 +44,6 @@ public class HandImpl implements Hand {
 			}
 		}
 		
-
-			
-
-	
 		// This will look if all the suits are the same 
 		// for the flush and the straightFlush.
 		// If it finds a different suit it will stop doing the loop
@@ -58,8 +54,6 @@ public class HandImpl implements Hand {
 				break;
 			}
 		}
-				
-
 
 		
 		
@@ -73,6 +67,7 @@ public class HandImpl implements Hand {
 		}
 		
 		
+
 		if(straightFlush){
 			category = Category.Straight_Flush;
 			hand = initialCards;

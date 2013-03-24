@@ -23,7 +23,7 @@ public class HandImplTest {
 		card[2] = new CardImpl(Rank.FOUR,Suit.DIAMONDS);
 		card[3] = new CardImpl(Rank.FIVE,Suit.DIAMONDS);
 		card[4] = new CardImpl(Rank.SIX,Suit.DIAMONDS);
-		hand = new HandImpl(card);	
+		hand = new HandImpl(card);
 		assertEquals(Category.Straight_Flush,hand.getCategory());
 		
 	}
@@ -64,9 +64,6 @@ public class HandImplTest {
 		card[3] = new CardImpl(Rank.THREE,Suit.DIAMONDS);
 		card[4] = new CardImpl(Rank.ACE,Suit.DIAMONDS);
 		hand = new HandImpl(card);
-		for(int i=0;i<5;i++){
-			System.out.println(hand.getHand()[i].getRank());
-		}
 		assertEquals(Category.Flush,hand.getCategory());		
 	}
 	
