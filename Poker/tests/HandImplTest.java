@@ -67,6 +67,37 @@ public class HandImplTest {
 		assertEquals(Category.Flush,hand.getCategory());		
 	}
 	
+	@Test
+	public void testStraight(){
+		Hand hand;	
+		Card[] card = new Card[5];
+		card[0] = new CardImpl(Rank.KING,Suit.DIAMONDS);
+		card[1] = new CardImpl(Rank.NINE,Suit.CLUBS);
+		card[2] = new CardImpl(Rank.QUEEN,Suit.DIAMONDS);
+		card[3] = new CardImpl(Rank.TEN,Suit.DIAMONDS);
+		card[4] = new CardImpl(Rank.JACK,Suit.DIAMONDS);
+		hand = new HandImpl(card);
+		assertEquals(Category.Straight,hand.getCategory());		
+	}
 	
+	@Test
+	public void testThreeKind1() {
+		Hand hand;	
+		Card[] card = new Card[5];
+		card[0] = new CardImpl(Rank.TWO,Suit.DIAMONDS);
+		card[1] = new CardImpl(Rank.THREE,Suit.CLUBS);
+		card[2] = new CardImpl(Rank.FOUR,Suit.HEARTS);
+		card[3] = new CardImpl(Rank.FOUR,Suit.SPADES);
+		card[4] = new CardImpl(Rank.FOUR,Suit.DIAMONDS);
+		hand = new HandImpl(card);
+		for(int i=0;i<5;i++){
+			System.out.println(hand.getHand()[i].getRank());
+		}
+		assertEquals(Category.Three_Of_A_Kind,hand.getCategory());		
+	}
+	
+	
+	
+
 
 }

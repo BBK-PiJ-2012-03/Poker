@@ -135,6 +135,41 @@ public class HandImpl implements Hand {
 			return;
 		}
 		
+		//Checking if there is a straight
+		
+		if(straight){
+			category = Category.Straight;
+			hand = initialCards;
+			return;
+		}
+		
+		// Checking if there are three of a kind
+		if(threeKind){
+			if(initialCards[0].getRank() == initialCards[1].getRank() && 
+					initialCards[1].getRank() == initialCards[2].getRank()){
+				category = Category.Three_Of_A_Kind;
+				hand = initialCards;
+				return;
+			} else if (initialCards[2].getRank() == initialCards[3].getRank() && 
+					initialCards[1].getRank() == initialCards[2].getRank()){
+				Card temp = initialCards[0];
+				initialCards[0] = initialCards[3];
+				initialCards[3] = temp;
+				category = Category.Three_Of_A_Kind;
+				hand = initialCards;
+			} else if (initialCards[2].getRank() == initialCards[3].getRank() && 
+					initialCards[3].getRank() == initialCards[4].getRank()){
+				Card temp = initialCards[0];
+				initialCards[0] = initialCards[3];
+				initialCards[3] = temp;
+				temp = initialCards[1];
+				initialCards[1] = initialCards[4];
+				initialCards[4] = temp;
+				category = Category.Three_Of_A_Kind;
+				hand = initialCards;
+			}
+		}
+		
 		
 	}
 
