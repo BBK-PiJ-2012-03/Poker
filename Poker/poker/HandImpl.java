@@ -253,7 +253,7 @@ public class HandImpl implements Hand {
 		String result = "";
 		
 		for(int i=0 ; i < hand.length; i++) {
-			result += "[" + hand[i].getRank().getRankValue() + " of " + hand[i].getSuit() + "] ";
+			result += "[" + hand[i].getRank().getRankValue() + " of " + hand[i].getSuit().getSuitCharacter() + "] ";
 		}
 		return result; 
 	}
