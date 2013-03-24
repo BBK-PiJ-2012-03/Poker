@@ -147,6 +147,15 @@ public class HandImpl implements Hand {
 		return hand;
 	}
 	
+	@Override
+	public String toString() {
+		String result = "";
+		
+		for(int i=0 ; i < hand.length; i++) {
+			result += "[" + hand[i].getRank().getRankValue() + " of " + hand[i].getSuit() + "] ";
+		}
+		return result; 
+	}
 
 
 }

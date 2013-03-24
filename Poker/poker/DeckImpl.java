@@ -43,6 +43,22 @@ public class DeckImpl implements Deck {
 		return cards;
 	}
 	
+	public Card dealCard() {
+		return myDeck.pop();
+	}
+	
+	/*public void prettyPrint() {
+		int counter = 0;
+		while ( !myDeck.empty() )
+        {
+                System.out.print ( myDeck.peek().getRank().getRankValue() + " of " + myDeck.pop().getSuit() );
+                System.out.print ( ',' );
+                counter++;
+        }
+		
+		System.out.println(counter);
+	}*/
+	
 	
 
 }
