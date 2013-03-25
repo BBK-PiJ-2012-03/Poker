@@ -2,7 +2,7 @@ package poker;
 
 import java.util.Scanner;
 
-public class GameImpl {
+public class Game {
 	
 	//Game starts
 	//Deck is initialized, (dealt and shuffled)
@@ -22,7 +22,7 @@ public class GameImpl {
 	//Game begins!
 	public static void main(String[] args) {
 		
-		GameImpl game = new GameImpl();
+		Game game = new Game();
 		game.launch();
 		
 	}

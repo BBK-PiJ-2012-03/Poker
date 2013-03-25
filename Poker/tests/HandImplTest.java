@@ -137,8 +137,75 @@ public class HandImplTest {
 		assertEquals(Category.High_Card,hand.getCategory());		
 	}
 	
+	@Test
+	public void testSetCards1(){
+		Hand hand;	
+		Card[] card = new Card[5];
+		card[0] = new CardImpl(Rank.KING,Suit.DIAMONDS);
+		card[1] = new CardImpl(Rank.EIGHT,Suit.CLUBS);
+		card[2] = new CardImpl(Rank.QUEEN,Suit.DIAMONDS);
+		card[3] = new CardImpl(Rank.TEN,Suit.DIAMONDS);
+		card[4] = new CardImpl(Rank.JACK,Suit.DIAMONDS);
+		hand = new HandImpl(card);
+		hand.setCards(new CardImpl(Rank.NINE,Suit.DIAMONDS));
+		assertEquals(Category.Straight_Flush,hand.getCategory());		
+	}
 	
+	@Test
+	public void testSetCards2(){
+		Hand hand;	
+		Card[] card = new Card[5];
+		card[0] = new CardImpl(Rank.KING,Suit.DIAMONDS);
+		card[1] = new CardImpl(Rank.EIGHT,Suit.CLUBS);
+		card[2] = new CardImpl(Rank.QUEEN,Suit.DIAMONDS);
+		card[3] = new CardImpl(Rank.SEVEN,Suit.DIAMONDS);
+		card[4] = new CardImpl(Rank.JACK,Suit.DIAMONDS);
+		hand = new HandImpl(card);
+		hand.setCards(new CardImpl(Rank.NINE,Suit.DIAMONDS),new CardImpl(Rank.TEN,Suit.CLUBS));
+		
+		assertEquals(Category.Straight,hand.getCategory());		
+	}
 	
+	@Test
+	public void testSetCards3(){
+		Hand hand;	
+		Card[] card = new Card[5];
+		card[0] = new CardImpl(Rank.ACE,Suit.DIAMONDS);
+		card[1] = new CardImpl(Rank.ACE,Suit.CLUBS);
+		card[2] = new CardImpl(Rank.THREE,Suit.DIAMONDS);
+		card[3] = new CardImpl(Rank.FOUR,Suit.DIAMONDS);
+		card[4] = new CardImpl(Rank.FIVE,Suit.DIAMONDS);
+		hand = new HandImpl(card);
+		hand.setCards(new CardImpl(Rank.NINE,Suit.DIAMONDS),new CardImpl(Rank.ACE,Suit.HEARTS),new CardImpl(Rank.ACE,Suit.SPADES));
+		assertEquals(Category.Four_Of_A_Kind,hand.getCategory());		
+	}
+	
+	@Test
+	public void testSetCards4(){
+		Hand hand;	
+		Card[] card = new Card[5];
+		card[0] = new CardImpl(Rank.ACE,Suit.DIAMONDS);
+		card[1] = new CardImpl(Rank.ACE,Suit.CLUBS);
+		card[2] = new CardImpl(Rank.THREE,Suit.DIAMONDS);
+		card[3] = new CardImpl(Rank.FOUR,Suit.DIAMONDS);
+		card[4] = new CardImpl(Rank.FIVE,Suit.DIAMONDS);
+		hand = new HandImpl(card);
+		hand.setCards(new CardImpl(Rank.NINE,Suit.DIAMONDS),new CardImpl(Rank.ACE,Suit.HEARTS),new CardImpl(Rank.ACE,Suit.SPADES), new CardImpl(Rank.TEN,Suit.CLUBS));
+		assertEquals(Category.Three_Of_A_Kind,hand.getCategory());		
+	}
 
+	@Test
+	public void testSetCards5(){
+		Hand hand;	
+		Card[] card = new Card[5];
+		card[0] = new CardImpl(Rank.ACE,Suit.DIAMONDS);
+		card[1] = new CardImpl(Rank.ACE,Suit.CLUBS);
+		card[2] = new CardImpl(Rank.THREE,Suit.DIAMONDS);
+		card[3] = new CardImpl(Rank.FOUR,Suit.DIAMONDS);
+		card[4] = new CardImpl(Rank.FIVE,Suit.DIAMONDS);
+		hand = new HandImpl(card);
+		hand.setCards(new CardImpl(Rank.NINE,Suit.DIAMONDS),new CardImpl(Rank.ACE,Suit.HEARTS),new CardImpl(Rank.ACE,Suit.SPADES), new CardImpl(Rank.TEN,Suit.CLUBS), new CardImpl(Rank.NINE,Suit.HEARTS));
+		assertEquals(Category.Two_Pairs,hand.getCategory());		
+	}
 
 }
