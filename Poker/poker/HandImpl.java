@@ -15,7 +15,6 @@ public class HandImpl implements Hand {
 		// the respective boolean turns false
 		boolean straightFlush = true;
 		boolean poker = false;
-		boolean fullHouse =true;
 		boolean flush = true;
 		boolean straight = true;
 		boolean threeKind = true;
@@ -253,7 +252,7 @@ public class HandImpl implements Hand {
 		String result = "";
 		
 		for(int i=0 ; i < hand.length; i++) {
-			result += "[" + hand[i].getRank().getRankValue() + " of " + hand[i].getSuit().getSuitCharacter() + "] ";
+			result += "[" + hand[i].getRank().getRankValue() + " of " + hand[i].getSuit() + "] ";
 		}
 		return result; 
 	}
