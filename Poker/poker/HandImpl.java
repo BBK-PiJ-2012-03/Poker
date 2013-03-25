@@ -15,7 +15,6 @@ public class HandImpl implements Hand {
 		// the respective boolean turns false
 		boolean straightFlush = true;
 		boolean poker = false;
-		boolean fullHouse =true;
 		boolean flush = true;
 		boolean straight = true;
 		boolean threeKind = true;

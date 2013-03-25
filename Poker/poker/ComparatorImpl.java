@@ -8,9 +8,9 @@ public class ComparatorImpl implements Comparator{
 	//if winner == 2; computer wins
 	//if winner == 0; tie
 	
-	public ComparatorImpl (Hand hand1, Hand hand2) {
+	public ComparatorImpl () {
 		
-		calculateWinner(hand1, hand2);
+		
 	}
 	
 	public int calculateWinner(Hand hand1,Hand hand2) {
