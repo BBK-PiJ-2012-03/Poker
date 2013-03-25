@@ -1,5 +1,10 @@
 package poker;
-
+ /**
+ * Hand is a poker hand. It consists of an array of 5 cards and a Category of the hand.
+ * Hand is evaluated and sorted at construction time (evaluateHand) is called by the constructor.
+ * It is sorted in a way that puts all the cards that make the Category of the hand at the beginning of the Card array. (for example Pairs or Three_of_a_Kind)
+ * and the rest cards are sorted
+ */
 public class HandImpl implements Hand {
 
 	Category category;
