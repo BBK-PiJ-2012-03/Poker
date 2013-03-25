@@ -2,7 +2,7 @@ package poker;
 
 import java.util.Scanner;
 
-public class Game {
+public class GameImpl {
 	
 	//Game starts
 	//Deck is initialized, (dealt and shuffled)
@@ -22,7 +22,7 @@ public class Game {
 	//Game begins!
 	public static void main(String[] args) {
 		
-		Game game = new Game();
+		GameImpl game = new GameImpl();
 		game.launch();
 		
 	}
@@ -53,8 +53,8 @@ public class Game {
 		//int playerCardsToChange = howManyCards();
 		
 		//Calculate winner!
-		Comparator comparator = new ComparatorImpl();
-		int result = comparator.calculateWinner(playerInitialHand, computerFinalHand);
+
+		int result = Comparator.calculateWinner(playerInitialHand, computerFinalHand);
 		if (result == 1) {
 			System.out.println("PLAYER wins!");
 		}
@@ -86,10 +86,10 @@ public class Game {
 		if (cardsToChange > 5) { //TODO CHECK IF its 5 or 3
 			scanner.close();
 			throw new IllegalArgumentException ("Wrong, you can only change 0 to 5 cards");
+
 		} 	
 		
 		scanner.close();
-		
 		return cardsToChange;
 	}
 }

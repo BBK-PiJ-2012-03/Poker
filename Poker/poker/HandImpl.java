@@ -9,7 +9,6 @@ public class HandImpl implements Hand {
 		evaluateHand(cards);		
 	}
 
-	
 	private void evaluateHand(Card[] initialCards) {
 		// This booleans will keep control of the hand.
 		// As soon as the different categories are discarded, 
@@ -256,14 +255,6 @@ public class HandImpl implements Hand {
 			result += "[" + hand[i].getRank().getRankValue() + " of " + hand[i].getSuit() + "] ";
 		}
 		return result; 
-	}
-
-
-	public void setCards(Card... cards) {
-		for(int i=0;i<cards.length;i++){
-			hand[4-i] = cards[i];
-		}
-		evaluateHand(hand);
 	}
 
 

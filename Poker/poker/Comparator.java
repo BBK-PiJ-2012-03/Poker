@@ -1,12 +1,42 @@
 package poker;
 
-public interface Comparator {
-	/**
-	* Given 2 Hands, calculates the winner
-	*
-	* @param hand1 the player hand
-	* @param hand2 the computer hand
-	* @return 1 if player's hand wins, 2 if computer's hand wins, 0 if we have a tie.
-	*/
-	public int calculateWinner(Hand hand1, Hand hand2);
+public class Comparator{
+
+
+	int winner;
+	//if winner == 1; user wins
+	//if winner == 2; computer wins
+	//if winner == 0; tie
+	
+	
+	public static int calculateWinner(Hand hand1,Hand hand2) {
+		
+		if (hand1.getCategory().ordinal() < hand2.getCategory().ordinal()) {
+			return 2;
+		}
+		
+		else if (hand1.getCategory().ordinal() > hand2.getCategory().ordinal()) {
+			return 1;
+		}
+		
+		else {
+			
+			for(int i=0; i < 5; i++) {
+				
+				if (hand1.getHand()[i].getRank().ordinal() < hand2.getHand()[i].getRank().ordinal() ) {
+					return 2;
+				} else 	if (hand1.getHand()[i].getRank().ordinal() > hand2.getHand()[i].getRank().ordinal() ) {
+					return 1;
+				}
+				
+				
+			}
+			
+			return 0;
+			
+		}
+		
+	}
+	
+	
 }

@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package tests;
 
 import static org.junit.Assert.*;
@@ -6,22 +9,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import poker.Card;
-
-import poker.Deck;
+import poker.CardImpl;
 import poker.DeckImpl;
 
 
-public class DeckTest {
+public class CardTest {
 
-	Deck firstTry;
-	Deck secondTry;
+	Card card;
 	
-	
-	Card tryCard;
 	@Before
 	public void setUp()  throws Exception {	
-		firstTry = new DeckImpl();
-		secondTry = new DeckImpl();
+		//card = new CardImpl();
+		
 		
 	}
 	
@@ -30,15 +29,9 @@ public class DeckTest {
 	//Testing that when dealing two decks the card on top of the decks is not the same
 	//There is 1/52 that this test fails
 	public void testCard() {
-		assertNotSame(firstTry.getDeck().pop(), secondTry.getDeck().pop());
+		//assertNotSame(firstTry.getDeck().pop(), secondTry.getDeck().pop());
 		
 		
 	}
-	
-	
-
-
-
-	
 
 }
