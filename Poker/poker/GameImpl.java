@@ -6,17 +6,11 @@ public class GameImpl {
 	
 	//Game starts
 	//Deck is initialized, (dealt and shuffled)
-	Deck deck = new DeckImpl();
+	Deck deck;
 	
 	//Hands are dealt
-	Hand playerInitialHand = new HandImpl(deck.dealHand());
-	Hand computerInitialHand = new HandImpl(deck.dealHand());
-	
-	//An array of card is created for its hand containing the cards of each hand
-	//This is done so that we can change some cards and then create a new hand which will be ordered and evaluated by HandImpl constructor
-	Card[] playerHandCards = playerInitialHand.getHand();
-	Card[] computerHandCards = computerInitialHand.getHand();
-	
+	Hand playerHand;
+	Hand computerHand;	
 	
 	
 	//Game begins!
@@ -29,32 +23,38 @@ public class GameImpl {
 	
 	public void launch() {
 	
-		//Dealer's changes come here TODO
-		int dealerCardsToChange = DealerAI.cardsToChange(computerInitialHand);
+		//Game starts
+		//Deck is initialized, (dealt and shuffled)
+		deck = new DeckImpl();
 		
-		while(dealerCardsToChange > 0) {
-			computerHandCards[5-dealerCardsToChange] = deck.dealCard();
-			dealerCardsToChange--;	
+		//Hands are dealt
+		playerHand = new HandImpl(deck.dealHand());
+		computerHand = new HandImpl(deck.dealHand());	
+		
+			
+		//Player's changes
+		System.out.println("Your initial hand is " + playerHand.toString() +". You have " + playerHand.getCategory());		
+		
+		int[] cardList = whichCards();
+		playerHand.setCards(cardList,getNewCards(cardList.length));
+		
+		//Dealer's changes come here 
+		int dealerCardsToChange = DealerAI.cardsToChange(computerHand);		
+						
+		if(dealerCardsToChange > 0) {
+			Card[] newCards = getNewCards(dealerCardsToChange);
+			computerHand.setCards(newCards);
+			System.out.println("\nComputer has changed " + dealerCardsToChange + " cards.\n");
+		} else {
+			System.out.println("\nComputer has not changed any card\n");
 		}
 		
-		//Finally I recreate the dealer's hand after the changes using the computerHandCards array
-		Hand computerFinalHand = new HandImpl(computerHandCards);
-		
-		//deck.prettyPrint(); WTF WHY WHY WHY WHY
-	
-		//Player's changes
-		System.out.println("Your hand is " + playerInitialHand.toString());
-		
-		System.out.println("Computer's hand is " + computerInitialHand.toString());
-		
-		
-		
-		
-		//int playerCardsToChange = howManyCards();
-		
 		//Calculate winner!
+		System.out.println("Computer's final hand is " + computerHand.toString() + ". It has " + computerHand.getCategory());
+		System.out.println("Your final hand is " + playerHand.toString() + ". You have " + playerHand.getCategory());
 
-		int result = Comparator.calculateWinner(playerInitialHand, computerFinalHand);
+		
+		int result = Comparator.calculateWinner(playerHand, computerHand);
 		if (result == 1) {
 			System.out.println("PLAYER wins!");
 		}
@@ -65,31 +65,63 @@ public class GameImpl {
 			System.out.println("We have a tie, please play again");
 		}
 		
-		System.out.println("Computer's final hand is " + computerFinalHand.toString());
+		
 		
 	
 	}
 	
-	private int howManyCards() {
-		System.out.println("How many cards you want to change?");
-		
-		Scanner scanner = new Scanner(System.in);
-		
-		int cardsToChange = 6; //It is initialized to a wrong input number. This way exception will be thrown later if the user input is wrong
-		try {
-			cardsToChange = Integer.parseInt(scanner.nextLine());
+	private Card[] getNewCards(int cardsToChange){
+		Card[] newCards = new Card[cardsToChange];
+		for(int i=0;i<cardsToChange;i++){
+			newCards[i]=deck.dealCard();
 		}
-		catch (NumberFormatException e) {
-			System.out.println("Not a valid number");
+		return newCards;
+	}
+	
+	
+	private int[] whichCards() {
+		
+		boolean notFinished = true;
+		int[] cardsToChange = null;
+		while(notFinished){
+			System.out.println("Which cards do you want to change? If you don't want to change any card, type 0. \n  Introduce the numbers separated by ',': ");
+					
+			Scanner scanner = new Scanner(System.in);
+			
+			String readCards = scanner.nextLine();
+			
+			if(readCards.equals("0")){
+				scanner.close();
+				cardsToChange = new int[1];
+				cardsToChange[0] = 0;
+				return cardsToChange;
+			} else {
+				String[] cardsString = scanner.nextLine().split(",");
+				System.out.println(cardsString.length);
+				cardsToChange = new int[cardsString.length];	
+				
+				if (cardsString.length > 5){
+					System.out.println("The amount of cards selected is invalid, as there can only be from 0 to 5");
+				} else {
+					try {
+						
+						for(int i=0;i<cardsString.length;i++){
+							cardsToChange[i] = Integer.parseInt(cardsString[i]);
+							if(cardsToChange[i] > 5 || cardsToChange[i] < 1){
+								throw new NumberFormatException();
+							}
+						}
+						notFinished=false;
+						scanner.close();						
+					}
+					catch (NumberFormatException e) {
+						System.out.println("Some of the data introduced is not a valid number or is not between 1 and 5");
+					}					
+				}
+			}			
 		}
-		
-		if (cardsToChange > 5) { //TODO CHECK IF its 5 or 3
-			scanner.close();
-			throw new IllegalArgumentException ("Wrong, you can only change 0 to 5 cards");
-
-		} 	
-		
-		scanner.close();
 		return cardsToChange;
+		
+			
 	}
 }

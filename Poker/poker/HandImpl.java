@@ -252,10 +252,22 @@ public class HandImpl implements Hand {
 		String result = "";
 		
 		for(int i=0 ; i < hand.length; i++) {
-			result += "[" + hand[i].getRank().getRankValue() + " of " + hand[i].getSuit() + "] ";
+			result +=  i+1 + ")-[" + hand[i].getRank().getRankValue() + " of " + hand[i].getSuit() + "] ";
 		}
 		return result; 
 	}
-
-
+	
+	public void setCards(Card... cards) {
+		for(int i=0;i<cards.length;i++){
+			hand[4-i] = cards[i];
+		}
+		evaluateHand(hand);
+	}
+	
+	public void setCards(int[] cardList,Card[] cards){
+		for(int i=0;i<cards.length;i++){
+			hand[cardList[i]] = cards[i];
+		}
+		evaluateHand(hand);		
+	}
 }
