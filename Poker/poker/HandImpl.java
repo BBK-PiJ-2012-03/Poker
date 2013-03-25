@@ -1,5 +1,5 @@
 package poker;
-
+ 
 public class HandImpl implements Hand {
 
 	Category category;
