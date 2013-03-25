@@ -8,7 +8,7 @@ public class HandImpl implements Hand {
 	public HandImpl(Card[] cards){
 		evaluateHand(cards);		
 	}
-	
+
 	private void evaluateHand(Card[] initialCards) {
 		// This booleans will keep control of the hand.
 		// As soon as the different categories are discarded, 

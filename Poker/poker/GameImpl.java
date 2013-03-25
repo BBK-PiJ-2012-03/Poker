@@ -2,7 +2,7 @@ package poker;
 
 import java.util.Scanner;
 
-public class GameImpl implements Game {
+public class GameImpl {
 	
 	//Game starts
 	//Deck is initialized, (dealt and shuffled)
@@ -70,7 +70,7 @@ public class GameImpl implements Game {
 	
 	}
 	
-	public int howManyCards() {
+	private int howManyCards() {
 		System.out.println("How many cards you want to change?");
 		
 		Scanner scanner = new Scanner(System.in);
@@ -86,7 +86,9 @@ public class GameImpl implements Game {
 		if (cardsToChange > 5) { //TODO CHECK IF its 5 or 3
 			scanner.close();
 			throw new IllegalArgumentException ("Wrong, you can only change 0 to 5 cards");
-		}
+
+		} 	
+		
 		scanner.close();
 		return cardsToChange;
 	}
