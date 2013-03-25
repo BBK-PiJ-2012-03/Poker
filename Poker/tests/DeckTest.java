@@ -17,6 +17,7 @@ public class DeckTest {
 	Deck secondTry;
 	
 	
+	
 	Card tryCard;
 	@Before
 	public void setUp()  throws Exception {	
@@ -26,14 +27,33 @@ public class DeckTest {
 	}
 	
 	
+	/**Because of the randomness of the Deck shuffling I am not able to know which card is not top.
+	 * So I will set up to Decks and assume that the card on top of them is different
+	 * There is 1/52 for each test that the card is randomly the same and therefore the test will fail.
+	 */
+	
+	
 	@Test
-	//Testing that when dealing two decks the card on top of the decks is not the same
-	//There is 1/52 that this test fails
-	public void testCard() {
+	public void testGetDeck() {
 		assertNotSame(firstTry.getDeck().pop(), secondTry.getDeck().pop());
-		
-		
+	
 	}
+	
+	@Test
+	public void testDealCard() {
+		assertNotSame(firstTry.dealCard(), secondTry.dealCard());
+	
+	}
+	
+	//This test should "never" fail, because the chances of dealing the same 5 cards are insane.
+	@Test
+	public void testDealHand() {
+		assertNotSame(firstTry.dealHand(), secondTry.dealHand());
+	
+	}
+	
+	
+	
 	
 	
 
