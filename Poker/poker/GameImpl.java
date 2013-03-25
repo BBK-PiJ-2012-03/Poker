@@ -98,8 +98,7 @@ public class GameImpl {
 				cardsToChange[0] = 0;
 				return cardsToChange;
 			} else {
-				String[] cardsString = scanner.nextLine().split(",");
-				System.out.println(cardsString.length);
+				String[] cardsString = readCards.split(",");
 				cardsToChange = new int[cardsString.length];	
 				
 				if (cardsString.length > 5){
