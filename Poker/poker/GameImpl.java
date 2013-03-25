@@ -53,8 +53,8 @@ public class GameImpl implements Game {
 		//int playerCardsToChange = howManyCards();
 		
 		//Calculate winner!
-		Comparator comparator = new ComparatorImpl();
-		int result = comparator.calculateWinner(playerInitialHand, computerFinalHand);
+
+		int result = Comparator.calculateWinner(playerInitialHand, computerFinalHand);
 		if (result == 1) {
 			System.out.println("PLAYER wins!");
 		}
@@ -84,9 +84,10 @@ public class GameImpl implements Game {
 		}
 		
 		if (cardsToChange > 5) { //TODO CHECK IF its 5 or 3
+			scanner.close();
 			throw new IllegalArgumentException ("Wrong, you can only change 0 to 5 cards");
 		}
-		
+		scanner.close();
 		return cardsToChange;
 	}
 }

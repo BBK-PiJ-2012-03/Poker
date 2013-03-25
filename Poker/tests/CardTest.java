@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package tests;
 
 import static org.junit.Assert.*;
@@ -6,22 +9,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import poker.Card;
-
-import poker.Deck;
+import poker.CardImpl;
 import poker.DeckImpl;
 
 
-public class DeckTest {
+public class CardTest {
 
-	Deck firstTry;
-	Deck secondTry;
+	Card card;
 	
-	
-	Card tryCard;
 	@Before
 	public void setUp()  throws Exception {	
-		firstTry = new DeckImpl();
-		secondTry = new DeckImpl();
+		card = new CardImpl();
+		
 		
 	}
 	
@@ -34,11 +33,5 @@ public class DeckTest {
 		
 		
 	}
-	
-	
-
-
-
-	
 
 }
