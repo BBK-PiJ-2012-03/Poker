@@ -16,5 +16,7 @@ public interface Hand {
 	 */
 	public Card[] getHand();
 	
+	public void setCards(Card... cards);
+	
 	public String toString();
 }

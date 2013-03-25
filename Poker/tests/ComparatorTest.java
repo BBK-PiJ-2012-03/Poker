@@ -28,7 +28,7 @@ public class ComparatorTest {
 		hand1 = new HandImpl(deck.dealHand());
 		hand2 = new HandImpl(deck.dealHand());
 		
-		comparator = new ComparatorImpl(hand1, hand2);
+		comparator = new ComparatorImpl();
 		
 		
 		

@@ -45,12 +45,27 @@ public class GameImpl {
 		//Player's changes
 		System.out.println("Your hand is " + playerInitialHand.toString());
 		
+		System.out.println("Computer's hand is " + computerInitialHand.toString());
 		
 		
 		
-		int playerCardsToChange = howManyCards();
 		
+		//int playerCardsToChange = howManyCards();
 		
+		//Calculate winner!
+		Comparator comparator = new ComparatorImpl();
+		int result = comparator.calculateWinner(playerInitialHand, computerFinalHand);
+		if (result == 1) {
+			System.out.println("PLAYER wins!");
+		}
+		else if(result == 2) {
+			System.out.println("COMPUTER wins!");
+		}
+		else {
+			System.out.println("We have a tie, please play again");
+		}
+		
+		System.out.println("Computer's final hand is " + computerFinalHand.toString());
 		
 	
 	}
