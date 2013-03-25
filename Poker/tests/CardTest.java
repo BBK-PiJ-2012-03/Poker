@@ -11,6 +11,8 @@ import org.junit.Test;
 import poker.Card;
 import poker.CardImpl;
 import poker.DeckImpl;
+import poker.Rank;
+import poker.Suit;
 
 
 public class CardTest {
@@ -19,19 +21,20 @@ public class CardTest {
 	
 	@Before
 	public void setUp()  throws Exception {	
-		//card = new CardImpl();
-		
+		card = new CardImpl(Rank.TWO,Suit.DIAMONDS);
 		
 	}
 	
+	@Test
+	public void testRank() {
+		String expectedResult = "2";
+		assertEquals(expectedResult , card.getRank().getRankValue());
+	}
 	
 	@Test
-	//Testing that when dealing two decks the card on top of the decks is not the same
-	//There is 1/52 that this test fails
-	public void testCard() {
-		//assertNotSame(firstTry.getDeck().pop(), secondTry.getDeck().pop());
-		
-		
+	public void testSuit() {
+		String expectedResult = "DIAMONDS";
+		assertEquals(expectedResult , card.getSuit().name());
 	}
 
 }

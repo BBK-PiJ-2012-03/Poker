@@ -2,6 +2,9 @@ package poker;
 
 import java.util.Stack;
 
+/**
+ * This is a deck. Once its created, a stack of all the 52 cards is created and then the cards are shuffled.
+ */
 public interface Deck {
 	/**
 	* Getter for the deck
@@ -20,6 +23,4 @@ public interface Deck {
 	 * @return the card on top of the Stack
 	 */
 	public Card dealCard();
-
-	/*public void prettyPrint();*/
 }

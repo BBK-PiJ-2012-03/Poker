@@ -6,7 +6,7 @@ import java.util.Stack;
 public class DeckImpl implements Deck {
 	private Stack<Card> myDeck;
 	
-	//A constructor will create a deck with all the cards, and then shuffle the deck to make the order random
+	//The constructor will create a deck with all the cards, and then shuffle the deck to make the order random
 	public DeckImpl() {
 		
 		 myDeck = new Stack<Card>();
@@ -20,12 +20,9 @@ public class DeckImpl implements Deck {
 				 
 				 //Now add them to the stack
 				 myDeck.push(myCard);
-			 }
-			  
-		 }
-		 
-		 Collections.shuffle(myDeck);
-		 	
+			 }  
+		 } 
+		 Collections.shuffle(myDeck); 	
 	}
 	
 	public Stack<Card> getDeck(){
@@ -46,19 +43,4 @@ public class DeckImpl implements Deck {
 	public Card dealCard() {
 		return myDeck.pop();
 	}
-	
-	/*public void prettyPrint() {
-		int counter = 0;
-		while ( !myDeck.empty() )
-        {
-                System.out.print ( myDeck.peek().getRank().getRankValue() + " of " + myDeck.pop().getSuit() );
-                System.out.print ( ',' );
-                counter++;
-        }
-		
-		System.out.println(counter);
-	}*/
-	
-	
-
 }
