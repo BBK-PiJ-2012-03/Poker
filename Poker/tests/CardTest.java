@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import poker.Card;
 import poker.CardImpl;
-import poker.DeckImpl;
 import poker.Rank;
 import poker.Suit;
 

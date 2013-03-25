@@ -36,7 +36,9 @@ public class GameImpl {
 		System.out.println("Your initial hand is " + playerHand.toString() +". You have " + playerHand.getCategory());		
 		
 		int[] cardList = whichCards();
-		playerHand.setCards(cardList,getNewCards(cardList.length));
+		if(cardList[0] != 0){
+			playerHand.setCards(cardList,getNewCards(cardList.length));
+		}
 		
 		//Dealer's changes come here 
 		int dealerCardsToChange = DealerAI.cardsToChange(computerHand);		
@@ -84,10 +86,10 @@ public class GameImpl {
 		boolean notFinished = true;
 		int[] cardsToChange = null;
 		while(notFinished){
-			System.out.println("Which cards do you want to change? If you don't want to change any card, type 0. \n  Introduce the numbers separated by ',': ");
+			System.out.println("Which cards do you want to change? If you don't want to change any card, type 0.");
+			System.out.print("Introduce the numbers separated by ',':");
 					
 			Scanner scanner = new Scanner(System.in);
-			
 			String readCards = scanner.nextLine();
 			
 			if(readCards.equals("0")){
@@ -107,15 +109,22 @@ public class GameImpl {
 						
 						for(int i=0;i<cardsString.length;i++){
 							cardsToChange[i] = Integer.parseInt(cardsString[i]);
+							// This detects that the position of the card is correct
 							if(cardsToChange[i] > 5 || cardsToChange[i] < 1){
 								throw new NumberFormatException();
+							}
+							// This detects if the card wanted to be changed has already been introduced
+							for(int j=0;j<i;j++){								
+								if(cardsToChange[j]==cardsToChange[i]){
+									throw new NumberFormatException();
+								}
 							}
 						}
 						notFinished=false;
 						scanner.close();						
 					}
 					catch (NumberFormatException e) {
-						System.out.println("Some of the data introduced is not a valid number or is not between 1 and 5");
+						System.out.println("Some of the data introduced is not a valid number, is not between 1 and 5, or a card is repeated");
 					}					
 				}
 			}			

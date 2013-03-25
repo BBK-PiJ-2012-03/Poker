@@ -266,7 +266,7 @@ public class HandImpl implements Hand {
 	
 	public void setCards(int[] cardList,Card[] cards){
 		for(int i=0;i<cards.length;i++){
-			hand[cardList[i]] = cards[i];
+			hand[cardList[i]-1] = cards[i];
 		}
 		evaluateHand(hand);		
 	}

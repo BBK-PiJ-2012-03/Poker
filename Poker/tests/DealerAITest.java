@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import poker.Card;
 import poker.CardImpl;
-import poker.Comparator;
 import poker.DealerAI;
 import poker.Hand;
 import poker.HandImpl;
