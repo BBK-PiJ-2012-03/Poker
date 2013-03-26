@@ -4,14 +4,9 @@ import java.util.Scanner;
 
 public class GameImpl {
 	
-	//Game starts
-	//Deck is initialized, (dealt and shuffled)
 	Deck deck;
-	
-	//Hands are dealt
 	Hand playerHand;
 	Hand computerHand;	
-	
 	
 	//Game begins!
 	public static void main(String[] args) {
@@ -23,7 +18,6 @@ public class GameImpl {
 	
 	public void launch() {
 	
-		//Game starts
 		//Deck is initialized, (dealt and shuffled)
 		deck = new DeckImpl();
 		
@@ -66,12 +60,13 @@ public class GameImpl {
 		else {
 			System.out.println("We have a tie, please play again");
 		}
-		
-		
-		
-	
+
 	}
-	
+	/**
+	 * This method creates an array of cards by dealing a number of cards equal to cardsToChange
+	 * @param cardsToChange is an integer indicating the number of the cards that need to be changed
+	 * @return an array of Cards that are the new changed cards.
+	 */
 	private Card[] getNewCards(int cardsToChange){
 		Card[] newCards = new Card[cardsToChange];
 		for(int i=0;i<cardsToChange;i++){
@@ -80,7 +75,12 @@ public class GameImpl {
 		return newCards;
 	}
 	
-	
+	/**
+	 * This method asks the user which cards he wants to change.
+	 * The user enters the position of the cards he want to change (separated by ',').
+	 * Then the method returns an array of integers with the positions
+	 * @return an array of integers with the positions of the cards that the user wants to change
+	 */
 	private int[] whichCards() {
 		
 		boolean notFinished = true;
